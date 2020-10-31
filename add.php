@@ -3,7 +3,7 @@ if(isset($_POST['submit'])){
 	$question_num = $_POST['question_num'];
 	$question_text = $_POST['question_text'];
 	$correct_choice = $_POST['correct_choice'];
-	// Choice Array
+
 	$choice = array();
 	$choice[1] = $_POST['choice1'];
 	$choice[2] = $_POST['choice2'];
@@ -11,13 +11,10 @@ if(isset($_POST['submit'])){
 	$choice[4] = $_POST['choice4'];
 	$choice[5] = $_POST['choice5'];
 
- // First Query for Questions Table
-
 	$insert = "INSERT INTO questions(`question_num`,`question_text`)
 	 VALUES('$question_num','$question_text')";
 	$result = mysqli_query($conn,$insert);
 	
-	//Validate First Query
 	if($result){
 		foreach($choice as $option => $value){
 			if($value != ""){
@@ -28,13 +25,10 @@ if(isset($_POST['submit'])){
 				}
 			
 
-
-				//Second Query for Choices Table
 				$insert = "INSERT INTO options(`question_num`,`is_correct`,`option`)
                 VALUES ('$question_num','$is_correct','$value')";
 				
 				$insert_row = mysqli_query($conn,$insert);
-				// Validate Insertion of Choices
 
 				if($insert_row){
 					continue;

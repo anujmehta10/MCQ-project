@@ -3,17 +3,9 @@ session_start();
 
 if(isset($_POST['login']))
 	{
-       // session_start();
 		$username = isset($_POST['username']) ? ($_POST['username']) : '';
 		$password = isset($_POST['password']) ? ($_POST['password']) : '';
        
-	   /*$sql = "SELECT * FROM users WHERE username='anuj' AND password='anuj' ";
-        $result = mysqli_query($conn,$sql);
-		$rows=mysqli_num_rows($result);
-		printf("Result set has %d rows.\n",$rows);*/
-		
-		
-		//if(mysqli_num_rows($result)==1)
 		if($username=='anuj' && $password=='anuj')
 		{
 			$_SESSION['message']="You are now logged in";
@@ -24,11 +16,6 @@ if(isset($_POST['login']))
 		{
 		$_SESSION['message']="Invalid Credintials";	
 		}
-	
-	//$insert = "INSERT INTO users(`username`, `email`, `password`)
-	//VALUES('$username', '$email', '$password')";
-		///mysqli_query($conn, $insert);
-	
 	}
 
 ?>

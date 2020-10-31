@@ -1,20 +1,14 @@
 <?php 
 	include 'config.php';
 	session_start(); 
-	//Set Question Number
 	$number = $_GET['n'];
-
-	//Query for the Question
 	$insert = "SELECT * FROM questions WHERE question_num = $number";
 
-	// Get the question
 	$result = mysqli_query($conn,$insert);
 	$question = mysqli_fetch_assoc($result); 
 
-	//Get Choices
 	$insert = "SELECT * FROM options WHERE question_num = $number";
 	$choices = mysqli_query($conn,$insert);
-	// Get Total questions
 	$insert = "SELECT * FROM questions";
 	$total_questions = mysqli_num_rows(mysqli_query($conn,$insert));
  	
